@@ -1,10 +1,10 @@
 import React from 'react';
 import { Facebook } from 'expo';
 import { StyleSheet, Text, View, Alert } from 'react-native';
+import { SocialIcon } from 'react-native-elements';
 
 export default class App extends React.Component {
-  render() {
-  async function logIn() {
+  login = async () => {
     const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('178192322746471', {
         permissions: ['public_profile'],
       });
@@ -18,18 +18,28 @@ export default class App extends React.Component {
       );
     }
   }
-  logIn();
+
+  render() {
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <SocialIcon
+          style={styles.facebookLogin}
+          button
+          raised
+          type='facebook'
+          onLongPress={this.login}
+          title='Login with Facebook' />
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  facebookLogin: {
+    width: 250,
+    marginTop: 10
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
