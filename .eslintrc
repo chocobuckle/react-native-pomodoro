@@ -23,6 +23,7 @@
     "comma-dangle": ["error", "never"],
     "jsx-quotes": ["error", "prefer-single"],
     "func-names": "off",
+    "global-require": "off",
     "object-curly-spacing": "off",
     "linebreak-style": "off",
     "no-alert": "off",
