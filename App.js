@@ -1,27 +1,19 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import { bool } from 'prop-types';
-import { ReactModoroNavigator } from '~/containers';
-import { PreSplash } from '~/components';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { Auth } from '~/containers';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+import * as reducers from './redux';
 
-class App extends Component {
-  static propTypes = {
-    isAuthenticating: bool.isRequired
-  }
+const store = createStore(
+  combineReducers(reducers),
+  applyMiddleware(thunk)
+);
 
-  static defaultProps = {
-    isAuthenticating: false
-  }
-
-  render() {
-    return (
-      <View style={{flex: 1}}>
-        {this.props.isAuthenticating === true
-          ? <PreSplash />
-          : <ReactModoroNavigator />}
-      </View>
-    );
-  }
+export default function ReactModoro() {
+  return (
+    <Provider store={store}>
+      <Auth />
+    </Provider>
+  );
 }
-
-export default App;

@@ -23,6 +23,7 @@ function Splash({ login }) {
           button
           raised
           type='facebook'
+          onPress={login}
           onLongPress={login}
           title='Login with Facebook'
         />
