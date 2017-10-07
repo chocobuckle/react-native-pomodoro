@@ -1,3 +1,4 @@
 export ReactModoroNavigator from './Navigator/ReactModoroNavigator';
 export SplashContainer from './Splash/SplashContainer';
-export Auth from './Auth/AuthContainer';
+export AuthContainer from './Auth/AuthContainer';
+export FooterTabsContainer from './FooterTabs/FooterTabsContainer';

@@ -5,7 +5,7 @@ import { bool } from 'prop-types';
 import { ReactModoroNavigator } from '~/containers';
 import { PreSplash } from '~/components';
 
-class Auth extends Component {
+class AuthContainer extends Component {
   static propTypes = {
     isAuthenticating: bool.isRequired
   }
@@ -31,4 +31,4 @@ function mapStateToProps({ authentication }) {
   };
 }
 
-export default connect(mapStateToProps)(Auth);
+export default connect(mapStateToProps)(AuthContainer);

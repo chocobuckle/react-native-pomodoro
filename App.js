@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Auth } from '~/containers';
+import { AuthContainer } from '~/containers';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import * as reducers from './redux';
@@ -13,7 +13,7 @@ const store = createStore(
 export default function ReactModoro() {
   return (
     <Provider store={store}>
-      <Auth />
+      <AuthContainer />
     </Provider>
   );
 }

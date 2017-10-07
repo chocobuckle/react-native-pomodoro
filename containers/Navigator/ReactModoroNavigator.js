@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Navigator } from 'react-native-deprecated-custom-components';
-import { SplashContainer } from '~/containers';
+import { SplashContainer, FooterTabsContainer } from '~/containers';
 
 class ReactModoroNavigator extends Component {
   configureScene = route => {
@@ -9,7 +9,8 @@ class ReactModoroNavigator extends Component {
   }
 
   renderScene = (route, navigator) => {
-    return <SplashContainer navigator={navigator} />
+    return <FooterTabsContainer navigator={navigator} />
+    // return <SplashContainer navigator={navigator} />
   }
 
   render() {
