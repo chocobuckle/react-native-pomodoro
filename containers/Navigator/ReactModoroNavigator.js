@@ -8,10 +8,8 @@ class ReactModoroNavigator extends Component {
 
   }
 
-  renderScene = (route, navigator) => {
-    return <FooterTabsContainer navigator={navigator} />
-    // return <SplashContainer navigator={navigator} />
-  }
+  renderScene = (route, navigator) => <FooterTabsContainer navigator={navigator} />;
+  // return <SplashContainer navigator={navigator} />
 
   render() {
     return (

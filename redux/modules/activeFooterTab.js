@@ -9,7 +9,7 @@ export function setFooterTab(tab) {
 
 const initialState = 'home';
 
-function activeFooterTab(state = initialState, action) {
+export default function activeFooterTab(state = initialState, action) {
   switch (action.type) {
     case SET_FOOTER_TAB:
       return action.tab;
@@ -17,5 +17,3 @@ function activeFooterTab(state = initialState, action) {
       return state;
   }
 }
-
-export default activeFooterTab;

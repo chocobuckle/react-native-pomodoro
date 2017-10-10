@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {} from 'prop-types';
 import { View, StyleSheet, Animated } from 'react-native';
 import { colors } from '~/styles';
 
