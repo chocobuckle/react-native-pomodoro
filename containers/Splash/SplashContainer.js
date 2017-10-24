@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Facebook } from 'expo';
-import { Alert } from 'react-native';
 import { Splash } from '~/components';
+import { connect } from 'react-redux';
+import { handleAuthWithFirebase } from '~/redux/modules/authentication';
 
 class SplashContainer extends Component {
+  static propTypes = {
+    login: PropTypes.func.isRequired
+  }
+
   login = async () => {
     const { type, token } = await Facebook.logInWithReadPermissionsAsync('178192322746471', {
       permissions: ['public_profile']
     });
 
     if (type === 'success') {
-      // Get the user's name using Facebook's Graph API
-      const response = await fetch(
-        `https://graph.facebook.com/me?access_token=${token}`);
-      Alert.alert(
-        'Logged in!',
-        `Hi ${(await response.json()).name}!`,
-      );
+      this.props.handleAuthWithFirebase(token);
     }
   }
 
@@ -27,4 +27,4 @@ class SplashContainer extends Component {
   }
 }
 
-export default SplashContainer;
+export default connect()(SplashContainer);

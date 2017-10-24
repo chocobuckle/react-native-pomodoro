@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-import { bool } from 'prop-types';
+import PropTypes from 'prop-types';
 import { ReactModoroNavigator } from '~/containers';
 import { PreSplash } from '~/components';
 
 class AuthContainer extends Component {
   static propTypes = {
-    isAuthenticating: bool.isRequired
+    isAuthenticating: PropTypes.bool.isRequired,
+    isAuthed: PropTypes.bool.isRequired
   }
 
   static defaultProps = {
     isAuthenticating: false
+  }
+
+  componentDidMount() {
+
   }
 
   render() {
@@ -19,7 +24,7 @@ class AuthContainer extends Component {
       <View style={{flex: 1}}>
         {this.props.isAuthenticating === true
           ? <PreSplash />
-          : <ReactModoroNavigator />}
+          : <ReactModoroNavigator isAuthed={this.props.isAuthed} />}
       </View>
     );
   }
@@ -27,7 +32,8 @@ class AuthContainer extends Component {
 
 function mapStateToProps({ authentication }) {
   return {
-    isAuthenticating: authentication.isAuthenticating
+    isAuthenticating: authentication.isAuthenticating,
+    isAuthed: authentication.isAuthed
   };
 }
 

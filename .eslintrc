@@ -17,7 +17,7 @@
   ],
   extends: ["airbnb", "plugin:react/recommended"],
   "rules": {
-    "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }],
+    "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": false }],
     "arrow-parens": ["error", "as-needed"],
     "array-bracket-spacing": "off",
     "comma-dangle": ["error", "never"],

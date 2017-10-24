@@ -4,12 +4,21 @@ import { Navigator } from 'react-native-deprecated-custom-components';
 import { SplashContainer, FooterTabsContainer } from '~/containers';
 
 class ReactModoroNavigator extends Component {
+  static propTypes = {
+    isAuthed: PropTypes.bool.isRequired
+  }
+
   configureScene = route => {
 
   }
 
-  renderScene = (route, navigator) => <FooterTabsContainer navigator={navigator} />;
-  // return <SplashContainer navigator={navigator} />
+  renderScene = (route, navigator) => {
+    if (this.props.isAuthed === false) {
+      return <SplashContainer navigator={navigator} />;
+    }
+    return <FooterTabsContainer navigator={navigator} />;
+  }
+
 
   render() {
     return (
