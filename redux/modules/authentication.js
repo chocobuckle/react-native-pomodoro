@@ -1,22 +1,34 @@
-import { authWithToken } from '~/api/auth';
+import authWithToken from '~/api/auth';
+import { Alert } from 'react-native';
 
 const AUTHENTICATING = 'AUTHENTICATING';
-const IS_AUTHED = 'AUTHED';
+const IS_AUTHED = 'IS_AUTHED';
 const NOT_AUTHED = 'NOT_AUTHED';
 
 const authenticating = () => ({ type: AUTHENTICATING});
 
-const authed = uid => ({ type: IS_AUTHED, uid });
+const isAuthed = uid => ({ type: IS_AUTHED, uid });
 
 const notAuthed = () => ({ type: NOT_AUTHED });
 
 export function handleAuthWithFirebase(accessToken) {
-  return function (dispatch, getState) {
+  return function (dispatch) {
     dispatch(authenticating());
-    try {
-      authWithToken(accessToken);
-    } catch (error) {
-      console.warn(`Error in handleAuthWithFirebase: ${error}`);
+    authWithToken(accessToken)
+      .then(() => {
+        Alert.alert('Success!');
+      })
+      .catch(error => console.warn(`Error in handleAuthWithFirebase: ${error}`));
+  };
+}
+
+export function onAuthChange(user) {
+  return function (dispatch) {
+    if (!user) {
+      dispatch(notAuthed());
+    } else {
+      const { uid } = user;
+      dispatch(isAuthed(uid));
     }
   };
 }

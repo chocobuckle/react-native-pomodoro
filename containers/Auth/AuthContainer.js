@@ -4,19 +4,18 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { ReactModoroNavigator } from '~/containers';
 import { PreSplash } from '~/components';
+import { firebaseAuth } from '~/config/constants';
+import { onAuthChange } from '~/redux/modules/authentication';
 
 class AuthContainer extends Component {
   static propTypes = {
     isAuthenticating: PropTypes.bool.isRequired,
-    isAuthed: PropTypes.bool.isRequired
-  }
-
-  static defaultProps = {
-    isAuthenticating: false
+    isAuthed: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired
   }
 
   componentDidMount() {
-
+    firebaseAuth.onAuthStateChanged(user => this.props.dispatch(onAuthChange(user)));
   }
 
   render() {

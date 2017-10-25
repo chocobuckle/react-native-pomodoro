@@ -7,7 +7,7 @@ import { handleAuthWithFirebase } from '~/redux/modules/authentication';
 
 class SplashContainer extends Component {
   static propTypes = {
-    login: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired
   }
 
   login = async () => {
@@ -15,8 +15,14 @@ class SplashContainer extends Component {
       permissions: ['public_profile']
     });
 
-    if (type === 'success') {
-      this.props.handleAuthWithFirebase(token);
+    console.log(type, token);
+
+    try {
+      if (type === 'success') {
+        this.props.dispatch(handleAuthWithFirebase(token));
+      }
+    } catch (error) {
+      console.warn('Error logging in!');
     }
   }
 

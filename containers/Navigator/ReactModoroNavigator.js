@@ -19,7 +19,6 @@ class ReactModoroNavigator extends Component {
     return <FooterTabsContainer navigator={navigator} />;
   }
 
-
   render() {
     return (
       <Navigator
