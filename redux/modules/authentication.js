@@ -1,4 +1,4 @@
-import authWithToken from '~/api/auth';
+import { authWithToken, updateUser } from '~/api/auth';
 import { Alert } from 'react-native';
 
 const AUTHENTICATING = 'AUTHENTICATING';
@@ -27,8 +27,12 @@ export function onAuthChange(user) {
     if (!user) {
       dispatch(notAuthed());
     } else {
-      const { uid } = user;
-      dispatch(isAuthed(uid));
+      const { uid, displayName, photoURL } = user;
+      updateUser({
+        uid,
+        displayName,
+        photoURL
+      }).then(() => dispatch(isAuthed(uid)));
     }
   };
 }
