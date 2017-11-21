@@ -37,12 +37,7 @@
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
-    "react/jsx-closing-bracket-location": [
-      "error",
-      {
-        "selfClosing": "tag-aligned",
-        "nonEmpty": "after-props"
-      }
-    ]
+    "react/jsx-closing-bracket-location": ["error", "after-props"],
+    "react/require-default-props": "off"
   }
 }
