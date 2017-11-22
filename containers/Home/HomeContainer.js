@@ -8,13 +8,11 @@ export default class HomeContainer extends Component {
     navigator: PropTypes.object.isRequired
   }
 
-  state = {
-
-  }
+  state = {}
 
   render() {
     return (
-      <Home />
+      <Home openDrawer={this.props.openDrawer} />
     );
   }
 }
