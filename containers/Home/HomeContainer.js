@@ -10,9 +10,18 @@ export default class HomeContainer extends Component {
 
   state = {}
 
+  handleToSettings = () => {
+    this.props.navigator.push({
+      settings: true
+    });
+  }
+
   render() {
     return (
-      <Home openDrawer={this.props.openDrawer} />
+      <Home
+        openDrawer={this.props.openDrawer}
+        handleToSettings={this.handleToSettings}
+      />
     );
   }
 }
