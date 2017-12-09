@@ -22,7 +22,7 @@ class SplashContainer extends Component {
         this.props.dispatch(handleAuthWithFirebase(token));
       }
     } catch (error) {
-      console.warn('Error logging in!');
+      console.warn(`Error logging in: ${error}`);
     }
   }
 

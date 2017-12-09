@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Settings } from '~/components';
+import { handleUnauth } from '~/redux/modules/authentication';
 
-export default class SettingsContainer extends Component {
+class SettingsContainer extends Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired
+    navigator: PropTypes.object.isRequired,
+    uid: PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired
   }
 
   state={
@@ -30,7 +34,7 @@ export default class SettingsContainer extends Component {
   }
 
   handleLogout = () => {
-    console.log('Logging out!');
+    this.props.dispatch(handleUnauth(this.props.uid));
   }
 
   render() {
@@ -48,3 +52,11 @@ export default class SettingsContainer extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ authentication }) => {
+  return {
+    uid: authentication.authedId
+  };
+};
+
+export default connect(mapStateToProps)(SettingsContainer);

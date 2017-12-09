@@ -30,7 +30,7 @@
     "no-console": "off",
     "react/jsx-filename-extension": "off",
     "no-extend-native": "off",
-    "no-param-reassign": ["error", { "props": false }],
+    "no-param-reassign": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-use-before-define": "off",
     "no-shadow": "off",
